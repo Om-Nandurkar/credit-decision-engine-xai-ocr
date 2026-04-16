@@ -24,11 +24,6 @@ export const Footer = () => {
       { name: "Support", href: "/support" },
       { name: "Privacy Policy", href: "/privacy" },
     ],
-    resources: [
-      { name: "Documentation", href: "/docs" },
-      { name: "Blog", href: "/blog" },
-      { name: "Community", href: "/community" },
-    ],
   };
 
   const socialLinks = [
@@ -55,22 +50,6 @@ export const Footer = () => {
               automate credit scoring while providing interpretable
               justifications for ethical lending decisions.
             </p>
-
-            {/* Contact Info */}
-            <div className="space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4" />
-                <span>support@fynxai.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4" />
-                <span>+91 (22) 1234-5678</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4" />
-                <span>Mumbai, IN</span>
-              </div>
-            </div>
           </div>
 
           {/* Product Links */}
@@ -107,21 +86,23 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Resource Links */}
+          {/* Contact Info */}
           <div>
-            <h3 className="font-semibold text-sm mb-4">Support</h3>
-            <ul className="space-y-3 text-sm">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h3 className="font-semibold text-sm mb-4">Contact</h3>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <div className="flex items-center space-x-2">
+                <Mail className="h-4 w-4" />
+                <span>support@fynxai.com</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="h-4 w-4" />
+                <span>+91 (22) 1234-5678</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <MapPin className="h-4 w-4" />
+                <span>Mumbai, IN</span>
+              </div>
+            </div>
           </div>
         </div>
 

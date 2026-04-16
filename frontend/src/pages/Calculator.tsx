@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Link } from 'react-router-dom';
 
 export default function Calculator() {
   const [emiInputs, setEmiInputs] = useState({
@@ -311,10 +312,10 @@ export default function Calculator() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="hover-lift">
-                Apply for Loan
+                <Link to="/apply">Apply for Loan</Link>
               </Button>
               <Button variant="outline" size="lg" className="hover-lift">
-                Learn More
+                <Link to="/about">Learn More</Link>
               </Button>
             </div>
           </Card>
