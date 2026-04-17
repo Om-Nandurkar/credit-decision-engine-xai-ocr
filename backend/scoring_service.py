@@ -118,20 +118,20 @@ def calculate_credit_score(application_id):
 
         features = {
             "income_stability": get_clean_string(income_profile.get('income_stability', "STABLE")),
-            "average_eligible_emi": float(income_profile.get('average_eligible_emi', 0)),
-            "average_usable_salary": float(income_profile.get('average_usable_salary', 0)),
-            "average_monthly_credit": float(income_profile.get('average_monthly_credit', 0)),
+            "average_eligible_emi": float(income_profile.get('average_eligible_emi') or 0),
+            "average_usable_salary": float(income_profile.get('average_usable_salary') or 0),
+            "average_monthly_credit": float(income_profile.get('average_monthly_credit') or 0) ,
             "employer_category": get_clean_string(employment_profile.get('employer_category', "Category A (MNC/Govt/PSU)")),
-            "employment_tenure_years": float(employment_profile.get('employment_tenure_years', 0)),
-            "average_month_end_balance": float(liquidity_behavior.get('average_month_end_balance', 0)),
+            "employment_tenure_years": float(employment_profile.get('employment_tenure_years') or 0),
+            "average_month_end_balance": float(liquidity_behavior.get('average_month_end_balance') or 0),
             "bounce_count": int(behavioral_flags.get('bounce_count', 0)),
             "gambling_transaction_count": int(behavioral_flags.get('gambling_transaction_count', 0)),
             "active_loans_count": active_loans_count,
             "has_credit_card": has_credit_card,
             "has_personal_loan": has_personal_loan,
             "has_home_loan": has_home_loan,
-            "credit_exposure_intensity": float(credit_exposure.get('credit_exposure_intensity', 0)),
-            "average_obligation_to_income_ratio": float(credit_exposure.get('average_obligation_to_income_ratio', 0))
+            "credit_exposure_intensity": float(credit_exposure.get('credit_exposure_intensity') or 0),
+            "average_obligation_to_income_ratio": float(credit_exposure.get('average_obligation_to_income_ratio') or 0)
         }
 
         training_cols = [

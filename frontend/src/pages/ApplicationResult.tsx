@@ -660,42 +660,33 @@ export default function ApplicationResult() {
                 </motion.div>
             )}
 
-
-
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}>
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <Target className="w-6 h-6 text-primary" />
-              Suggestions to Improve Your Score
-            </h2>
-
-            <div className="space-y-6">
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-4 glass rounded-lg text-center border hover:border-primary/50 transition-colors cursor-default">
-                  <h4 className="font-semibold mb-2">Improve Credit History</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Ensure all EMIs are paid on time. A single bounce can drop score by 30+ points.
-                  </p>
-                </div>
-                <div className="p-4 glass rounded-lg text-center border hover:border-primary/50 transition-colors cursor-default">
-                  <h4 className="font-semibold mb-2">
-                    Reduce Credit Utilization
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    Try to keep credit card usage below 30% of your total limit.
-                  </p>
-                </div>
-                <div className="p-4 glass rounded-lg text-center border hover:border-primary/50 transition-colors cursor-default">
-                  <h4 className="font-semibold mb-2">Maintain Balance</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Avoid letting your bank balance drop too low at month end.
-                  </p>
-                </div>
+        {/* Feedback Widget */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Card className="p-8 text-center">
+              <h3 className="text-xl font-bold mb-4">
+                Did this explanation help?
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                Your feedback helps us improve our support and explainability.
+              </p>
+              <div className="flex gap-4 justify-center">
+                <Button variant="outline" className="hover-lift">
+                  👍 Yes, helpful
+                </Button>
+                <Button variant="outline" className="hover-lift">
+                  👎 Needs improvement
+                </Button>
               </div>
-            </div>
-          </Card>
-        </motion.div>
-        
+            </Card>
+          </motion.div>
+        </div>
+      </section>
         {/* Hidden Chart strictly for high-quality PDF Export Capture */}
         <div style={{ position: "absolute", top: "-9999px", left: "-9999px" }}>
           

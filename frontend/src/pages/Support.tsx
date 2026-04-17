@@ -279,33 +279,6 @@ export default function Support() {
         </div>
       </section>
 
-      {/* Feedback Widget */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Card className="p-8 text-center">
-              <h3 className="text-xl font-bold mb-4">
-                Did this explanation help?
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Your feedback helps us improve our support and explainability.
-              </p>
-              <div className="flex gap-4 justify-center">
-                <Button variant="outline" className="hover-lift">
-                  👍 Yes, helpful
-                </Button>
-                <Button variant="outline" className="hover-lift">
-                  👎 Needs improvement
-                </Button>
-              </div>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }
