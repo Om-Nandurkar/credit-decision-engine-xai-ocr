@@ -22,9 +22,9 @@ import Profile from "./pages/Profile";
 import LoanOfficerDashboard from "./pages/LoanOfficerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import ApplicationDetail from "./pages/ApplicationDetail";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/layout/ScrollToTop";
-
 
 const queryClient = new QueryClient();
 
@@ -55,6 +55,7 @@ const App = () => (
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/support" element={<Support />} />
                     <Route path="/calculator" element={<Calculator />} />
+                    <Route path="/privacy" element={<PrivacyPolicy />} />
                     <Route path="/apply" element={<LoanApplication />} />
                     <Route
                       path="/documents/:appId"

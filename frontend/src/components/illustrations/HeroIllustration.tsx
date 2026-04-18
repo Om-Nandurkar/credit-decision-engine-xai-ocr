@@ -140,10 +140,10 @@ export const HeroIllustration = ({
           transition={{ duration: 0.6, delay: 0.9 }}
         >
           <path
-            d="M280 150 L300 140 L320 150 L320 180 C320 195 300 210 300 210 C300 210 280 195 280 180 Z"
+            d="M280 150 L300 140 L320 150 L320 155 C320 180 300 190 300 190 C300 190 280 180 280 155 Z"
             fill="url(#hero-gradient1)"
             stroke="white"
-            strokeWidth="2"
+            strokeWidth="3"
           />
           <path
             d="M290 165 L297 172 L310 155"

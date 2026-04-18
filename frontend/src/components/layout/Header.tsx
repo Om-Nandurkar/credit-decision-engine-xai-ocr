@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge"; 
+import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,8 +23,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/supabaseClient"; 
-import { toast } from "sonner"; 
+import { supabase } from "@/supabaseClient";
+import { toast } from "sonner";
 
 export const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -54,7 +54,9 @@ export const Header = () => {
 
     // 2. Supabase Auth Logic
     const getUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       if (session?.user) {
         formatAndSetUser(session.user);
       }
@@ -63,29 +65,31 @@ export const Header = () => {
     getUser();
 
     // Listen for Login/Logout events
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        if (session?.user) {
-          formatAndSetUser(session.user);
-        } else {
-          setUser(null);
-        }
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        formatAndSetUser(session.user);
+      } else {
+        setUser(null);
       }
-    );
+    });
 
     return () => subscription.unsubscribe();
   }, []);
 
   const formatAndSetUser = (supabaseUser: any) => {
     const meta = supabaseUser.user_metadata || {};
-    
+
     // FIX: Ensure the role is converted to a lowercase string so our routing switch-cases match perfectly.
     const rawRole = meta.role || "applicant";
     const normalizedRole = String(rawRole).toLowerCase();
-    
+
     setUser({
       id: supabaseUser.id,
-      name: meta.first_name ? `${meta.first_name} ${meta.last_name || ''}` : "User",
+      name: meta.first_name
+        ? `${meta.first_name} ${meta.last_name || ""}`
+        : "User",
       email: supabaseUser.email || "",
       avatar: meta.avatar_url || "",
       role: normalizedRole as "applicant" | "officer" | "admin",
@@ -111,6 +115,7 @@ export const Header = () => {
     { name: "About", href: "/about" },
     { name: "Calculator", href: "/calculator" },
     { name: "Support", href: "/support" },
+    { name: "Privacy Policy", href: "/privacy" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -130,7 +135,7 @@ export const Header = () => {
   const getUserDashboard = () => {
     // FIX: Adding an extra lowercase safeguard here ensures the routing never fails
     const currentRole = user?.role?.toLowerCase() || "";
-    
+
     switch (currentRole) {
       case "officer":
         return "/officer";
@@ -177,7 +182,9 @@ export const Header = () => {
                 to={item.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
-                  isActive(item.href) ? "text-primary" : "text-muted-foreground"
+                  isActive(item.href)
+                    ? "text-primary"
+                    : "text-muted-foreground",
                 )}
               >
                 {item.name}
@@ -224,7 +231,10 @@ export const Header = () => {
                       <p className="text-xs text-muted-foreground">
                         {user.email}
                       </p>
-                      <Badge className="text-xs w-fit mt-1 capitalize" variant="secondary">
+                      <Badge
+                        className="text-xs w-fit mt-1 capitalize"
+                        variant="secondary"
+                      >
                         {user.role}
                       </Badge>
                     </div>
@@ -320,7 +330,7 @@ export const Header = () => {
                       "block px-3 py-2 rounded-md text-base font-medium transition-colors",
                       isActive(item.href)
                         ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+                        : "text-muted-foreground hover:text-primary hover:bg-muted/50",
                     )}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

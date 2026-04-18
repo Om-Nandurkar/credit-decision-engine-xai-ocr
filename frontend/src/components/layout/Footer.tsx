@@ -117,7 +117,7 @@ export const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
               © {currentYear} FynXai. All rights reserved.
             </p>
