@@ -264,13 +264,33 @@ CREATE POLICY "Enable read access for authenticated users" ON public.feedback FO
 ### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/fynxai.git
-cd fynxai
+git clone https://github.com/Hrishit-Patil/credit-decision-engine-xai-ocr.git
+cd credit-decision-engine-xai-ocr.git
 ```
 
 ---
 
-### 3. Backend Setup
+### 3. Environment Configuration
+
+Backend `.env`:
+
+```env
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_KEY=your_supabase_anon_public_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+```
+
+Frontend `.env`:
+
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_public_key
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+---
+
+### 4. Backend Setup
 
 ```bash
 cd backend
@@ -297,13 +317,13 @@ http://localhost:8000
 
 ---
 
-### 4. Frontend Setup
+### 5. Frontend Setup
 
 ```bash
 cd frontend
 
 npm install
-cp .env.example .env
+cp supabaseClient.example.ts supabaseClient.ts
 ```
 
 Run the frontend:
@@ -316,26 +336,6 @@ Frontend will run at:
 
 ```
 http://localhost:5173
-```
-
----
-
-### 5. Environment Configuration
-
-Backend `.env`:
-
-```env
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_KEY=your_supabase_anon_public_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-```
-
-Frontend `.env`:
-
-```env
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_public_key
-VITE_API_BASE_URL=http://localhost:8000
 ```
 
 ---
