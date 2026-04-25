@@ -5,7 +5,8 @@ from datetime import datetime
 from ocr_service import process_loan_application
 from scoring_service import calculate_credit_score, supabase
 
-app = FastAPI()
+# Added redirect_slashes=False to prevent "Failed to fetch" on slash mismatches
+app = FastAPI(redirect_slashes=False)
 
 app.add_middleware(
     CORSMiddleware,
@@ -14,6 +15,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- CRITICAL: Manual Options Handler for Browsers ---
+@app.options("/{rest_of_path:path}")
+async def preflight_handler(request: Request, rest_of_path: str):
+    return Response(
+        status_code=200,
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
+            "Access-Control-Allow-Headers": "*",
+        },
+    )
 
 class LoanRequest(BaseModel):
     loan_id: str
