@@ -29,7 +29,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { supabase } from "@/supabaseClient";
+// UPDATED: Import apiBaseUrl alongside supabase
+import { supabase, apiBaseUrl } from "@/supabaseClient";
 import { toast } from "sonner";
 
 // --- NEW IMPORTS FOR DATA EXPORT ---
@@ -118,7 +119,8 @@ export default function Profile() {
         if (userRole.toLowerCase() === 'admin' || userRole.toLowerCase() === 'officer') {
           // Fetch Overall Platform Stats for Admins & Officers
           try {
-            const response = await fetch('http://127.0.0.1:8000/admin/stats');
+            // UPDATED: Used apiBaseUrl variable
+            const response = await fetch(`${apiBaseUrl}/admin/stats`);
             if (response.ok) {
               const statsData = await response.json();
               setStats({

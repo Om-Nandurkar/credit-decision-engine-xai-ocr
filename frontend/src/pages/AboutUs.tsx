@@ -70,8 +70,8 @@ export default function AboutUs() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-            About FynXai
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            About <span className="text-primary">FynXai</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We're building the future of fair lending through transparent AI.

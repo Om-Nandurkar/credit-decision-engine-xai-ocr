@@ -22,7 +22,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { supabase } from "@/supabaseClient";
+import { supabase, apiBaseUrl } from "@/supabaseClient";
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
@@ -255,7 +255,7 @@ export default function DocumentVerification() {
         toast({ title: "Processing", description: "Analyzing updated document set..." });
 
         // 3. Trigger Backend to Re-run OCR on ALL files
-        const response = await fetch('http://127.0.0.1:8000/update-document', {
+        const response = await fetch(`${apiBaseUrl}/update-document`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ loan_id: appId })
@@ -514,7 +514,7 @@ export default function DocumentVerification() {
                 <Button 
                     size="lg" 
                     onClick={handleSubmitCorrections}
-                    className="w-full md:w-auto min-w-[250px] shadow-xl hover:shadow-2xl transition-all"
+                    className="w-full md:w-auto min-w-[250px] shadow-xl hover-lift"
                     disabled={processingUpdate}
                 >
                     <CheckCircle className="w-4 h-4 mr-2"/> Complete Verification

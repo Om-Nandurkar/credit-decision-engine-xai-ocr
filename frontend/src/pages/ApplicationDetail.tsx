@@ -53,7 +53,8 @@ import {
 } from "recharts";
 import confetti from "canvas-confetti";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/supabaseClient";
+// UPDATED: Import apiBaseUrl alongside supabase
+import { supabase, apiBaseUrl } from "@/supabaseClient";
 
 // --- PDF GENERATION IMPORTS ---
 import jsPDF from "jspdf";
@@ -297,7 +298,8 @@ export default function ApplicationDetail() {
     try {
       setLoading(true);
 
-      const response = await fetch('http://127.0.0.1:8000/calculate-score', {
+      // UPDATED: Used apiBaseUrl variable
+      const response = await fetch(`${apiBaseUrl}/calculate-score`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

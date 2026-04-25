@@ -52,7 +52,8 @@ import {
   BarChart3,
 } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/supabaseClient";
+// UPDATED: Import apiBaseUrl alongside supabase
+import { supabase, apiBaseUrl } from "@/supabaseClient";
 
 // Mock data
 const modelVersions = [
@@ -112,7 +113,8 @@ export default function AdminDashboard() {
 
   const fetchAdminStats = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/admin/stats');
+      // UPDATED: Used apiBaseUrl variable
+      const response = await fetch(`${apiBaseUrl}/admin/stats`);
       if (response.ok) {
         const data = await response.json();
         setDynamicMetrics([
@@ -263,7 +265,8 @@ export default function AdminDashboard() {
   const handleAddUser = async () => {
     try {
       toast.loading("Creating user...");
-      const response = await fetch('http://127.0.0.1:8000/admin/create-user', {
+      // UPDATED: Used apiBaseUrl variable
+      const response = await fetch(`${apiBaseUrl}/admin/create-user`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -295,7 +298,8 @@ export default function AdminDashboard() {
   const handleDeleteUser = async (id: string) => {
     try {
       toast.loading("Deleting user completely...");
-      const response = await fetch(`http://127.0.0.1:8000/admin/delete-user/${id}`, {
+      // UPDATED: Used apiBaseUrl variable
+      const response = await fetch(`${apiBaseUrl}/admin/delete-user/${id}`, {
         method: 'DELETE'
       });
 

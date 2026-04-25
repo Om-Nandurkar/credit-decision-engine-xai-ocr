@@ -51,8 +51,9 @@ export default function Login() {
           // Fallback if role fetch fails
           navigate("/dashboard");
         } else {
+          
           const role = (userProfile as any)?.role;
-
+          
           toast.success(`Welcome back!`);
 
           // 3. Role-Based Redirect
@@ -196,7 +197,7 @@ export default function Login() {
                 </div>
               </div>
 
-              <div className="mt-10 text-center text-sm">
+              <div className="mt-6 text-center text-sm">
                 <span className="text-muted-foreground">
                   Don't have an account?{" "}
                 </span>
