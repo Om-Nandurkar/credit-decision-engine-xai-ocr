@@ -11,7 +11,8 @@ env/
 myenv/
 backend/myenv/
 backend/.env
-frontend/src/supabaseClient.ts
+#frontend/src/supabaseClient.ts
+frontend/src/supabaseClient.example.ts
 
 # Python cache
 __pycache__/
